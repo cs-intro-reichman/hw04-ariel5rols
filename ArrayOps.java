@@ -52,7 +52,7 @@ public class ArrayOps {
             }
             if (notEqual) {return false;}
         }
-        return notEqual;
+        return true;
     }
 
     public static boolean isSorted(int [] array) {

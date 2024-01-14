@@ -61,6 +61,7 @@ public class StringOps {
                 if (firstEverLetter) {
                     // convert first letter of first word to lowercase
                     firstEverLetter = false;
+                    firstLetter = false;
                     if (currentChar >= 'a' && currentChar <= 'z') {
                         result += currentChar;
                     } else {
