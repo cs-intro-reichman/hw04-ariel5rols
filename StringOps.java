@@ -47,8 +47,8 @@ public class StringOps {
         return result;
     }
 
-    String r = capVowelsLowRest("input");
-    System.out.println(r);
+    // String r = capVowelsLowRest("input");
+    // System.out.println(r);
     public static String camelCase (String string) {
         String result = "";
         boolean first_letter = true;
@@ -58,7 +58,7 @@ public class StringOps {
                 char currentChar = string.charAt(i);
                 if (first_ever_letter) {
                     first_ever_letter = false;
-                    if (currentChar > 96 && currentChar < 123) {
+                    if (currentChar >= 'a' && currentChar <= 'z') {
                         result += currentChar;
                     }
                     else {result += currentChar - 32;}
@@ -66,13 +66,13 @@ public class StringOps {
                 else if (first_letter) {
                     first_letter = false;
                     // already lowercase
-                    if (currentChar > 96 && currentChar < 123) {
+                    if (currentChar >= 'a' && currentChar <= 'z') {
                         result += currentChar + 32;
                     }
                     else {result += currentChar;}
                 }
                 else {
-                    if (currentChar > 123) {
+                    if (currentChar > 'z') {
                         result += currentChar - 32;
                     }
                     else {result += currentChar;}
