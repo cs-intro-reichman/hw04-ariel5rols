@@ -60,6 +60,7 @@ public class StringOps {
             if (currentChar != ' ') {
                 if (firstEverLetter) {
                     firstEverLetter = false;
+                    firstLetter = false;
                     if (currentChar >= 'a' && currentChar <= 'z') {
                         result += currentChar;
                     } else {
@@ -76,7 +77,7 @@ public class StringOps {
                     if (currentChar >= 'a' && currentChar <= 'z') {
                         result += currentChar;
                     } else {
-                        result += (char) (currentChar + 32);
+                        result += (char) (currentChar - 32);
                     }
                 }
             } else {

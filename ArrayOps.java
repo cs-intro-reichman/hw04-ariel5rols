@@ -47,11 +47,18 @@ public class ArrayOps {
     }
 
     public static boolean isSorted(int [] array) {
-        Arrays.sort(array);
+        boolean sorted1 = true;
+        boolean sorted2 = true;
+        // sorted from small to big
         for (int i = 1; i < array.length; i++) {
-            if (array[i] < array[i-1]) {return false;}
+            if (!(array[i] > array[i-1])) {sorted1 = false;}
         }
-        return true;
+        // sorted from big to small
+        for (int i = 1; i < array.length; i++) {
+            if (!(array[i] < array[i-1])) {sorted2 = false;}
+        }
+
+        return sorted1 || sorted2;
     }
 
 }
