@@ -35,13 +35,13 @@ public class StringOps {
             if (vowels.indexOf(currentChar) != -1) {
                 // Convert to uppercase with ASCII
                 if (currentChar >= 'a' && currentChar <= 'z') {
-                    result += (char)(currentChar + 32); 
+                    result += (char)(currentChar - 32); 
                 }
                 else {result += (char)(currentChar);}
             } else {
-                if (currentChar >= 'a' && currentChar <= 'z') {
+                if (currentChar >= 'A' && currentChar <= 'Z') {
                     result += currentChar;
-                } else {result += currentChar - 32;}
+                } else {result += currentChar + 32;}
             }
     }   
         return result;
@@ -53,18 +53,17 @@ public class StringOps {
         String result = "";
         boolean firstLetter = true;
         boolean firstEverLetter = true;
-
+    
         for (int i = 0; i < string.length(); i++) {
             char currentChar = string.charAt(i);
-
+    
             if (currentChar != ' ') {
                 if (firstEverLetter) {
                     firstEverLetter = false;
-                    firstLetter = false;
                     if (currentChar >= 'a' && currentChar <= 'z') {
                         result += currentChar;
                     } else {
-                        result += (char) (currentChar + 32);
+                        result += (char) (currentChar - 32);
                     }
                 } else if (firstLetter) {
                     firstLetter = false;
@@ -77,14 +76,14 @@ public class StringOps {
                     if (currentChar >= 'a' && currentChar <= 'z') {
                         result += currentChar;
                     } else {
-                        result += (char) (currentChar - 32);
+                        result += (char) (currentChar + 32);
                     }
                 }
             } else {
                 firstLetter = true;
             }
         }
-
+    
         return result;
     }
 
