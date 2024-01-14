@@ -27,21 +27,28 @@ public class StringOps {
 
     public static String capVowelsLowRest (String string) {
         String result = "";
-        String vowels = "aeiou";
+        String vowels = "aeiouAEIOU";
     
         for (int i = 0; i < string.length(); i++) {
             char currentChar = string.charAt(i);
             
             if (vowels.indexOf(currentChar) != -1) {
                 // Convert to uppercase with ASCII
-                result += (char)(currentChar - 32); 
+                if (currentChar > 96 && currentChar < 123) {
+                    result += (char)(currentChar + 32); 
+                }
+                else {result += (char)(currentChar);}
             } else {
-                result += currentChar;
+                if (currentChar > 96 && currentChar < 123) {
+                    result += currentChar;
+                } else {result += currentChar - 32;}
             }
     }   
         return result;
     }
-
+    String input = args[0];
+    String r = capVowelsLowRest(input);
+    System.out.println(r);
     public static String camelCase (String string) {
         String result = "";
         boolean first_letter = true;
