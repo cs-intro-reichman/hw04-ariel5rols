@@ -26,17 +26,87 @@ public class StringOps {
     }
 
     public static String capVowelsLowRest (String string) {
-        // Write your code here:
-        return "";
+        String result = "";
+        String vowels = "aeiouAEIOU";
+    
+        for (int i = 0; i < string.length(); i++) {
+            char currentChar = string.charAt(i);
+            
+            if (vowels.indexOf(currentChar) != -1) {
+                // Convert to uppercase with ASCII
+                if (currentChar >= 'a' && currentChar <= 'z') {
+                    result += (char)(currentChar - 32); 
+                }
+                else {result += currentChar;}
+            } else {
+                if (currentChar >= 'A' && currentChar <= 'Z') {
+                    result += (char)(currentChar + 32);
+                } else {result += (char) (currentChar);}
+            }
+        }
+        return result;
     }
 
+    // String r = capVowelsLowRest("input");
+    // System.out.println(r);
     public static String camelCase (String string) {
-        // Write your code here:
-        return "";
+        String result = "";
+        boolean firstLetter = true;
+        boolean firstEverLetter = true;
+    
+        for (int i = 0; i < string.length(); i++) {
+            char currentChar = string.charAt(i);
+    
+            if (currentChar != ' ') {
+                if (firstEverLetter) {
+                    // convert first letter of first word to lowercase
+                    firstEverLetter = false;
+                    firstLetter = false;
+                    if (currentChar >= 'a' && currentChar <= 'z') {
+                        result += currentChar;
+                    } else {
+                        result += (char) (currentChar + 32);
+                    }
+                } else if (firstLetter) {
+                    // convert first letter of non first word to upperCase
+                    firstLetter = false;
+                    if (currentChar >= 'a' && currentChar <= 'z') {
+                        result += (char) (currentChar - 32);
+                    } else {
+                        result += currentChar;
+                    }
+                } else {
+                    // convert all other words to lowercase
+                    if (currentChar >= 'a' && currentChar <= 'z') {
+                        result += currentChar;
+                    } else {
+                        result += (char) (currentChar + 32);
+                    }
+                }
+            } else {
+                firstLetter = true;
+            }
+        }
+    
+        return result;
     }
 
     public static int[] allIndexOf (String string, char chr) {
-        // Write your code here:
-        return new int[1];
+        
+        int counter = 0;
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) == chr) {
+                counter++;
+            }
+        }
+        int arr_index = 0;
+        int[] arr = new int[counter];
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) == chr) {
+                arr[arr_index] = i;
+                arr_index++;
+            }
+        }
+        return arr;
     }
 }
