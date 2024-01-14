@@ -51,36 +51,39 @@ public class StringOps {
     // System.out.println(r);
     public static String camelCase (String string) {
         String result = "";
-        boolean first_letter = true;
-        boolean first_ever_letter = true;
+        boolean firstLetter = true;
+        boolean firstEverLetter = true;
+
         for (int i = 0; i < string.length(); i++) {
-            if (string.charAt(i) != ' ') {
-                char currentChar = string.charAt(i);
-                if (first_ever_letter) {
-                    first_ever_letter = false;
+            char currentChar = string.charAt(i);
+
+            if (currentChar != ' ') {
+                if (firstEverLetter) {
+                    firstEverLetter = false;
                     if (currentChar >= 'a' && currentChar <= 'z') {
                         result += currentChar;
+                    } else {
+                        result += (char) (currentChar + 32);
                     }
-                    else {result += currentChar - 32;}
-                }
-                else if (first_letter) {
-                    first_letter = false;
-                    // already lowercase
+                } else if (firstLetter) {
+                    firstLetter = false;
                     if (currentChar >= 'a' && currentChar <= 'z') {
-                        result += currentChar + 32;
+                        result += (char) (currentChar - 32);
+                    } else {
+                        result += currentChar;
                     }
-                    else {result += currentChar;}
-                }
-                else {
-                    if (currentChar > 'z') {
-                        result += currentChar - 32;
+                } else {
+                    if (currentChar >= 'a' && currentChar <= 'z') {
+                        result += currentChar;
+                    } else {
+                        result += (char) (currentChar + 32);
                     }
-                    else {result += currentChar;}
                 }
+            } else {
+                firstLetter = true;
             }
-            else {first_letter = true;}
-            
         }
+
         return result;
     }
 
@@ -88,14 +91,14 @@ public class StringOps {
         
         int counter = 0;
         for (int i = 0; i < string.length(); i++) {
-            if (string.indexOf(chr) != -1) {
+            if (string.charAt(i) == chr) {
                 counter++;
             }
         }
         int arr_index = 0;
         int[] arr = new int[counter];
         for (int i = 0; i < string.length(); i++) {
-            if (string.indexOf(chr) != -1) {
+            if (string.charAt(i) == chr) {
                 arr[arr_index] = i;
                 arr_index++;
             }
