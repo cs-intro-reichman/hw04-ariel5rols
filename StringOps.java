@@ -34,12 +34,12 @@ public class StringOps {
             
             if (vowels.indexOf(currentChar) != -1) {
                 // Convert to uppercase with ASCII
-                if (currentChar > 96 && currentChar < 123) {
+                if (currentChar >= 'a' && currentChar <= 'z') {
                     result += (char)(currentChar + 32); 
                 }
                 else {result += (char)(currentChar);}
             } else {
-                if (currentChar > 96 && currentChar < 123) {
+                if (currentChar >= 'a' && currentChar <= 'z') {
                     result += currentChar;
                 } else {result += currentChar - 32;}
             }
