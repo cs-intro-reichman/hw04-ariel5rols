@@ -37,13 +37,13 @@ public class StringOps {
                 if (currentChar >= 'a' && currentChar <= 'z') {
                     result += (char)(currentChar - 32); 
                 }
-                else {result += (char)(currentChar);}
+                else {result += currentChar;}
             } else {
                 if (currentChar >= 'A' && currentChar <= 'Z') {
-                    result += currentChar;
-                } else {result += currentChar + 32;}
+                    result += (char)(currentChar + 32);
+                } else {result += (char) (currentChar);}
             }
-    }   
+        }
         return result;
     }
 
@@ -59,13 +59,15 @@ public class StringOps {
     
             if (currentChar != ' ') {
                 if (firstEverLetter) {
+                    // convert first letter of first word to lowercase
                     firstEverLetter = false;
                     if (currentChar >= 'a' && currentChar <= 'z') {
                         result += currentChar;
                     } else {
-                        result += (char) (currentChar - 32);
+                        result += (char) (currentChar + 32);
                     }
                 } else if (firstLetter) {
+                    // convert first letter of non first word to upperCase
                     firstLetter = false;
                     if (currentChar >= 'a' && currentChar <= 'z') {
                         result += (char) (currentChar - 32);
@@ -73,6 +75,7 @@ public class StringOps {
                         result += currentChar;
                     }
                 } else {
+                    // convert all other words to lowercase
                     if (currentChar >= 'a' && currentChar <= 'z') {
                         result += currentChar;
                     } else {

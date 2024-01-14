@@ -37,13 +37,22 @@ public class ArrayOps {
     }
 
     public static boolean containsTheSameElements(int [] array1,int [] array2) {
+        boolean notEqual = true;
         for (int i = 0; i < array1.length; i++) {
-            if (!Arrays.asList(array2).contains(array1[i])) {return false;}
+            notEqual = true;
+            for (int j = 0; j < array2.length; j++) {
+                if (array1[i] == array2[j]) {notEqual=false;break;}
+            }
+            if (notEqual) {return false;}
         }
         for (int i = 0; i < array2.length; i++) {
-            if (!Arrays.asList(array1).contains(array2[i])) {return false;}
+            notEqual = true;
+            for (int j = 0; j < array1.length; j++) {
+                if (array1[j] == array2[i]) {notEqual=false;break;}
+            }
+            if (notEqual) {return false;}
         }
-        return true;
+        return notEqual;
     }
 
     public static boolean isSorted(int [] array) {
