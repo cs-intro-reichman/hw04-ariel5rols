@@ -46,8 +46,8 @@ public class StringOps {
     }   
         return result;
     }
-    String input = args[0];
-    String r = capVowelsLowRest(input);
+
+    String r = capVowelsLowRest("input");
     System.out.println(r);
     public static String camelCase (String string) {
         String result = "";
@@ -85,7 +85,21 @@ public class StringOps {
     }
 
     public static int[] allIndexOf (String string, char chr) {
-        // Write your code here:
-        return new int[1];
+        
+        int counter = 0;
+        for (int i = 0; i < string.length(); i++) {
+            if (string.indexOf(chr) != -1) {
+                counter++;
+            }
+        }
+        int arr_index = 0;
+        int[] arr = new int[counter];
+        for (int i = 0; i < string.length(); i++) {
+            if (string.indexOf(chr) != -1) {
+                arr[arr_index] = i;
+                arr_index++;
+            }
+        }
+        return arr;
     }
 }
